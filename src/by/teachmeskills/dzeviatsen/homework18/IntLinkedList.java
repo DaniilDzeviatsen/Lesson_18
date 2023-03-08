@@ -14,7 +14,7 @@ public class IntLinkedList implements IntList {
             if (headNode.getNextNode() == null) {
                 throw new IllegalArgumentException("Index out of bounds");
             }
-            headNode.getNextNode();
+            headNode = headNode.getNextNode();
             counter++;
         }
         return headNode.getElement();
@@ -28,10 +28,10 @@ public class IntLinkedList implements IntList {
         int returnedElement = 0;
         for (int i = 0; i <= index; i++) {
             if (i == index) {
-                headNode.getNextNode();
                 returnedElement = headNode.getElement();
                 headNode.setElement(element);
             }
+            headNode=headNode.getNextNode();
         }
         return returnedElement;
     }
@@ -41,6 +41,7 @@ public class IntLinkedList implements IntList {
         int size = 0;
         while (headNode.getNextNode() != null) {
             size = size + 1;
+            headNode=headNode.getNextNode();
         }
         return size;
     }
@@ -83,7 +84,7 @@ public class IntLinkedList implements IntList {
             if (headNode.getElement() == element) {
                 lastIndex = i;
             }
-            headNode=headNode.getNextNode();
+            headNode = headNode.getNextNode();
         }
         return lastIndex;
     }
