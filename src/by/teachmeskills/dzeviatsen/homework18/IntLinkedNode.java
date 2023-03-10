@@ -19,4 +19,9 @@ public class IntLinkedNode {
     public void setNextNode(IntLinkedNode nextNode) {
         this.nextNode = nextNode;
     }
+
+    @Override
+    public String toString() {
+        return element+" ";
+    }
 }
