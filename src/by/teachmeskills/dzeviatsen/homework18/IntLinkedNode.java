@@ -1,8 +1,17 @@
 package by.teachmeskills.dzeviatsen.homework18;
 
 public class IntLinkedNode {
-    private int element;
-    private IntLinkedNode nextNode;
+    public int element;
+    public IntLinkedNode nextNode;
+
+    public IntLinkedNode(int element, IntLinkedNode nextNode) {
+        this.element = element;
+        this.nextNode = nextNode;
+    }
+
+    public IntLinkedNode() {
+
+    }
 
     public int getElement() {
         return this.element;
@@ -22,6 +31,6 @@ public class IntLinkedNode {
 
     @Override
     public String toString() {
-        return element+" ";
+        return String.valueOf(element);
     }
 }

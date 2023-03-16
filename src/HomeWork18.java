@@ -19,8 +19,7 @@ public class HomeWork18 {
                     int element = Integer.parseInt(sc.nextLine());
                     System.out.println("Realization through Linked list");
                     linkedList.add(element);
-                    linkedList.printList();
-                    System.out.println();
+                    System.out.println(linkedList);
                     System.out.println("Realization through ArrayList");
                     arrayList.add(element);
                     System.out.println(arrayList);
@@ -39,8 +38,6 @@ public class HomeWork18 {
                 case 3 -> {
                     System.out.println("Enter index you want to get element of");
                     int index = Integer.parseInt(sc.nextLine());
-                    linkedList.get(index);
-                    arrayList.get(index);
                     System.out.println("Your element from Linked List is " + linkedList.get(index));
                     System.out.println("Your element from Array List is " + arrayList.get(index));
                 }
@@ -61,8 +58,8 @@ public class HomeWork18 {
                     System.out.println(arrayList.size());
                 }
                 case 7 -> {
-                    linkedList.printList();
-                    System.out.println(arrayList.toString());
+                    System.out.println(linkedList);
+                    System.out.println(arrayList);
                 }
             }
         } while (true);

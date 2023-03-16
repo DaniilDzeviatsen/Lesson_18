@@ -8,17 +8,17 @@ public class IntLinkedList implements IntList {
         zeroNode = null;
     }
 
+
     @Override
     public int get(int index) {
-        int listLength=size();
-        if(index<0||index>=listLength){
-            throw new IllegalArgumentException("Index is out of bounds");
+        if (index < 0) {
+            throw new IllegalArgumentException("Index out of bounds");
         }
         int counter = 0;
         headNode = zeroNode;
         while (counter != index) {
             if (headNode.getNextNode() == null) {
-                return headNode.getElement();
+                throw new IllegalArgumentException("Index is out of bounds");
             }
             headNode = headNode.getNextNode();
             counter++;
@@ -28,19 +28,8 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int set(int index, int element) {
-        int listLength = size();
-        if (index >= listLength || index < 0) {
-            throw new IllegalArgumentException("Index out of bounds");
-        }
         int returnedElement = get(index);
-        headNode = zeroNode;
-        for (int i = 0; i <= index; i++) {
-            if (i == index) {
-                returnedElement = headNode.getElement();
-                headNode.setElement(element);
-            }
-            headNode = headNode.getNextNode();
-        }
+        headNode.setElement(element);
         return returnedElement;
     }
 
@@ -62,7 +51,6 @@ public class IntLinkedList implements IntList {
         headNode = zeroNode;
         if (zeroNode == null) {
             zeroNode = node;
-
         } else {
             while (headNode.getNextNode() != null) {
                 headNode = headNode.getNextNode();
@@ -71,43 +59,41 @@ public class IntLinkedList implements IntList {
         }
     }
 
-    public int remove(int index) {
-        int listLength=size();
-        if (index<0||index>=listLength){
-            throw new IllegalArgumentException("Index is out of bounds");
-        }
-        int removedNum=get(index);
-        if (index < 0 || index > size()) {
-            throw new IllegalArgumentException("Index out of bounds");
-        }
-        headNode = zeroNode;
-        for (int i = 0; i <= index; i++) {
-            headNode.getNextNode();
-            if (i == index) {
-                removedNum = headNode.getNextNode().getElement();
-                headNode.setNextNode(headNode.getNextNode().getNextNode());
-                headNode = headNode.getNextNode();
-                return removedNum;
-            }
-        }
-        return removedNum;
-    }
-
     public int lastIndexOf(int element) {
-        int listLength = size();
         headNode = zeroNode;
-        for (int i = 0; i < listLength; i++) {
-            headNode.getNextNode();
+        int i = 0;
+        int lastIndex = -1;
+        while (headNode != null) {
             if (headNode.getElement() == element) {
-                return i;
+                lastIndex = i;
             }
             headNode = headNode.getNextNode();
+            i++;
         }
-        return -1;
+
+        return lastIndex;
     }
 
+
+    @Override
     public String toString() {
-        return String.valueOf(headNode);
+        String list = "[";
+        headNode = zeroNode;
+        if (zeroNode == null) {
+            return "[]";
+        }
+        while (headNode != null) {
+            if (headNode.getNextNode() == null) {
+                list = list + String.valueOf(headNode);
+            } else {
+                list = list + String.valueOf(headNode) + ", ";
+
+            }
+            headNode = headNode.getNextNode();
+
+        }
+        list = list + "]";
+        return list;
     }
 
     public void printList() {
@@ -117,5 +103,38 @@ public class IntLinkedList implements IntList {
             headNode = headNode.getNextNode();
         }
         System.out.println();
+    }
+
+    private IntLinkedNode getNode(int index) {
+        if (index < 0) throw new IndexOutOfBoundsException();
+        headNode = zeroNode;
+        int i = 0;
+        while (i < index && headNode != null) {
+            headNode = headNode.nextNode;
+            i++;
+        }
+        if (headNode == null) throw new IndexOutOfBoundsException();
+        return headNode;
+    }
+
+    public int remove(int index) {
+
+        if (zeroNode == null) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            int removed = zeroNode.element;
+            zeroNode = zeroNode.getNextNode();
+            return removed;
+
+        } else {
+            IntLinkedNode preRemovedNode = getNode(index - 1);
+            IntLinkedNode removedNode = preRemovedNode.nextNode;
+            if (removedNode == null) {
+                throw new IndexOutOfBoundsException();
+            }
+            preRemovedNode.nextNode = removedNode.nextNode;
+            return removedNode.element;
+        }
     }
 }
