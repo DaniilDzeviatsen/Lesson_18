@@ -29,7 +29,7 @@ public class HomeWork18 {
                     int element = Integer.parseInt(sc.nextLine());
                     System.out.println("Enter index you want it to get");
                     int index = Integer.parseInt(sc.nextLine());
-                    System.out.printf("%s%n%s", "Your returned element from Linked list is " + linkedList.set(index, element) +
+                    System.out.printf("%s%n%s", "Your retu rned element from Linked list is " + linkedList.set(index, element) +
                                     " and it was replaced  by " + element,
                             "Your returned element from Array list is " + arrayList.set(index, element) +
                                     " and it was replaced by " + element);
