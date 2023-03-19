@@ -1,6 +1,7 @@
 package by.teachmeskills.dzeviatsen.homework18;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class IntArrayList implements IntList {
 
@@ -21,7 +22,7 @@ public class IntArrayList implements IntList {
     }
 
     @Override
-    public int get(int index) {
+    public Integer get(int index) {
         if (index > list.length - 1 || index < 0) {
             throw new IllegalArgumentException("Index out of bounds");
         }
@@ -104,5 +105,9 @@ public class IntArrayList implements IntList {
         }
     }
 
+    @Override
+    public Iterator<Integer> iterator() {
+        return new IntListIndexIterator(this);
+    }
 }
 

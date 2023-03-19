@@ -1,5 +1,7 @@
 package by.teachmeskills.dzeviatsen.homework18;
 
+import java.util.Iterator;
+
 public class IntLinkedList implements IntList {
     private IntLinkedNode headNode;
     private IntLinkedNode zeroNode;
@@ -10,7 +12,7 @@ public class IntLinkedList implements IntList {
 
 
     @Override
-    public int get(int index) {
+    public Integer get(int index) {
         return getNode(index).getElement();
     }
 
@@ -115,5 +117,10 @@ public class IntLinkedList implements IntList {
             preRemovedNode.nextNode = removedNode.nextNode;
             return removedNode.element;
         }
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new IntLinkedNodeIterator(zeroNode);
     }
 }

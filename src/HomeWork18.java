@@ -1,17 +1,18 @@
 import by.teachmeskills.dzeviatsen.homework18.IntArrayList;
 import by.teachmeskills.dzeviatsen.homework18.IntLinkedList;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
-public class HomeWork18 {
+public class HomeWork18  {
     public static void main(String[] args) {
         IntArrayList arrayList = new IntArrayList();
         IntLinkedList linkedList = new IntLinkedList();
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.printf("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n", "Choose operation:", "1) Add element", "2) Set element",
+            System.out.printf("%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n", "Choose operation:", "1) Add element", "2) Set element",
                     "3) Get element", "4)remove element", "5)get last index of element",
-                    "6) get size of the list", "7) show list");
+                    "6) get size of the list", "7) show list", "8) Iteration");
             int taskNum = Integer.parseInt(sc.nextLine());
             switch (taskNum) {
                 case 1 -> {
@@ -29,7 +30,7 @@ public class HomeWork18 {
                     int element = Integer.parseInt(sc.nextLine());
                     System.out.println("Enter index you want it to get");
                     int index = Integer.parseInt(sc.nextLine());
-                    System.out.printf("%s%n%s", "Your retu rned element from Linked list is " + linkedList.set(index, element) +
+                    System.out.printf("%s%n%s", "Your returned element from Linked list is " + linkedList.set(index, element) +
                                     " and it was replaced  by " + element,
                             "Your returned element from Array list is " + arrayList.set(index, element) +
                                     " and it was replaced by " + element);
@@ -60,6 +61,16 @@ public class HomeWork18 {
                 case 7 -> {
                     System.out.println(linkedList);
                     System.out.println(arrayList);
+                }
+                case 8->{
+                    Iterator<Integer> intListIndexIterator= arrayList.iterator();
+                    while (intListIndexIterator.hasNext()){
+                        System.out.println(intListIndexIterator.next());
+                    }
+                    Iterator<Integer>intLinkedeNodeIterator=linkedList.iterator();
+                    while (intLinkedeNodeIterator.hasNext()){
+                        System.out.println(intLinkedeNodeIterator.next());
+                    }
                 }
             }
         } while (true);
