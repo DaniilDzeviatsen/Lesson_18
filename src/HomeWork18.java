@@ -35,6 +35,8 @@ public class HomeWork18  {
                             "Your returned element from Array list is " + arrayList.set(index, element) +
                                     " and it was replaced by " + element);
                     System.out.println();
+                    System.out.println();
+
                 }
                 case 3 -> {
                     System.out.println("Enter index you want to get element of");

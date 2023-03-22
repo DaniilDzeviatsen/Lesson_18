@@ -3,7 +3,6 @@ package by.teachmeskills.dzeviatsen.homework18;
 import java.util.Iterator;
 
 public class IntLinkedList implements IntList {
-    private IntLinkedNode headNode;
     private IntLinkedNode zeroNode;
 
     public IntLinkedList() {
@@ -19,14 +18,14 @@ public class IntLinkedList implements IntList {
     @Override
     public int set(int index, int element) {
         int returnedElement = get(index);
-        headNode.setElement(element);
+        getNode(index).setElement(element);
         return returnedElement;
     }
 
     @Override
     public int size() {
         int size = 0;
-        headNode = zeroNode;
+        IntLinkedNode headNode = zeroNode;
         while (headNode != null) {
             size = size + 1;
             headNode = headNode.getNextNode();
@@ -38,10 +37,10 @@ public class IntLinkedList implements IntList {
     public void add(int element) {
         IntLinkedNode node = new IntLinkedNode();
         node.setElement(element);
-        headNode = zeroNode;
         if (zeroNode == null) {
             zeroNode = node;
         } else {
+            IntLinkedNode headNode = zeroNode;
             while (headNode.getNextNode() != null) {
                 headNode = headNode.getNextNode();
             }
@@ -50,7 +49,7 @@ public class IntLinkedList implements IntList {
     }
 
     public int lastIndexOf(int element) {
-        headNode = zeroNode;
+        IntLinkedNode headNode = zeroNode;
         int i = 0;
         int lastIndex = -1;
         while (headNode != null) {
@@ -68,10 +67,11 @@ public class IntLinkedList implements IntList {
     @Override
     public String toString() {
         String list = "[";
-        headNode = zeroNode;
+
         if (zeroNode == null) {
             return "[]";
         }
+        IntLinkedNode headNode = zeroNode;
         while (headNode != null) {
             if (headNode.getNextNode() == null) {
                 list = list + headNode;
@@ -88,7 +88,7 @@ public class IntLinkedList implements IntList {
 
     private IntLinkedNode getNode(int index) {
         if (index < 0) throw new IndexOutOfBoundsException();
-        headNode = zeroNode;
+        IntLinkedNode headNode = zeroNode;
         int i = 0;
         while (i < index && headNode != null) {
             headNode = headNode.nextNode;
