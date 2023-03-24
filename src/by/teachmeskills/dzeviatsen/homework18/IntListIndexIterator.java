@@ -1,6 +1,7 @@
 package by.teachmeskills.dzeviatsen.homework18;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class IntListIndexIterator implements Iterator<Integer> {
     private IntList list;
@@ -17,7 +18,8 @@ public class IntListIndexIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        Integer element=list.get(i);
+        if (!this.hasNext()) throw new NoSuchElementException();
+        Integer element = list.get(i);
         i++;
         return element;
     }

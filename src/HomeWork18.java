@@ -1,10 +1,11 @@
 import by.teachmeskills.dzeviatsen.homework18.IntArrayList;
 import by.teachmeskills.dzeviatsen.homework18.IntLinkedList;
+import by.teachmeskills.dzeviatsen.homework18.IntList;
 
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class HomeWork18  {
+public class HomeWork18 {
     public static void main(String[] args) {
         IntArrayList arrayList = new IntArrayList();
         IntLinkedList linkedList = new IntLinkedList();
@@ -64,17 +65,28 @@ public class HomeWork18  {
                     System.out.println(linkedList);
                     System.out.println(arrayList);
                 }
-                case 8->{
-                    Iterator<Integer> intListIndexIterator= arrayList.iterator();
-                    while (intListIndexIterator.hasNext()){
+                case 8 -> {
+                    Iterator<Integer> intListIndexIterator = arrayList.iterator();
+                    while (intListIndexIterator.hasNext()) {
                         System.out.println(intListIndexIterator.next());
                     }
-                    Iterator<Integer>intLinkedeNodeIterator=linkedList.iterator();
-                    while (intLinkedeNodeIterator.hasNext()){
+                    System.out.println();
+                    Iterator<Integer> intLinkedeNodeIterator = linkedList.iterator();
+                    while (intLinkedeNodeIterator.hasNext()) {
                         System.out.println(intLinkedeNodeIterator.next());
                     }
+                    System.out.println();
+                    forEach(arrayList);
+                    forEach(linkedList);
                 }
             }
         } while (true);
+    }
+
+    public static void forEach(IntList list) {
+        for (Integer element : list) {
+            System.out.println(element);
+        }
+        System.out.println();
     }
 }

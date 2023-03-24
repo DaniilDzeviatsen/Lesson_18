@@ -17,8 +17,9 @@ public class IntLinkedList implements IntList {
 
     @Override
     public int set(int index, int element) {
-        int returnedElement = get(index);
-        getNode(index).setElement(element);
+        IntLinkedNode node = getNode(index);
+        int returnedElement = node.element;
+        node.element = element;
         return returnedElement;
     }
 
